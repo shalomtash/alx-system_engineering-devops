@@ -7,3 +7,4 @@ set
 BEST=School
 export BEST=School
 echo $(($TRUEKNOWLEDGE + 128))
+echo $(($POWER / $DIVIDE))
