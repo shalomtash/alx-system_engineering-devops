@@ -13,3 +13,4 @@ echo $((2#$BINARY))
 echo {a..z}{a..z} | tr " " "\n" | grep -v "oo"
 printf "%.2f" $NUM | sort
 printf '%x\n' $DECIMAL
+tr `echo {a..z} | tr -d ' '` `echo {n..z} $(echo {a..m}) | tr -d ' '` | tr `echo {A..Z} | tr -d ' '` `echo {N..Z} $(echo {A..M}) | tr -d ' '`
