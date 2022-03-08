@@ -8,3 +8,4 @@ head -n 3 iacta | tail -n 1
 ls -la > ls_cwd_content
 tail -n 1 iacta >> iacta
 find . -type f -name "*.js" -delete
+find . -type d -not -name '.' | wc -l
