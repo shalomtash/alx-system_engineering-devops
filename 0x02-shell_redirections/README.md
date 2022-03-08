@@ -19,3 +19,4 @@ grep -i "^[a-z]" /etc/ssh/sshd_config
 tr "A" "Z" | tr "c" "e"
 tr -d "cC"
 rev
+cut -d ':' -f 1,6 /etc/passwd | sort
