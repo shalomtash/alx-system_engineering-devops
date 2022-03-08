@@ -5,3 +5,4 @@ echo $((`echo $PATH | grep -o ":/" | wc -l`+ 1))
 printenv
 set
 BEST=School
+export BEST=School
