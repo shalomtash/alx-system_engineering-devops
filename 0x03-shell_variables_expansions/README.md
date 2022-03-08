@@ -15,3 +15,4 @@ printf "%.2f" $NUM | sort
 printf '%x\n' $DECIMAL
 tr `echo {a..z} | tr -d ' '` `echo {n..z} $(echo {a..m}) | tr -d ' '` | tr `echo {A..Z} | tr -d ' '` `echo {N..Z} $(echo {A..M}) | tr -d ' '`
 perl -lne 'print if $. % 2 == 1'
+echo $(printf %o $(($((5#$(echo $WATER | tr 'water' '01234'))) + $((5#$(echo $STIR | tr 'stir.' '01234'))))) | tr '01234567' 'behlnort')
