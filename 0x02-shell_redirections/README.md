@@ -24,3 +24,4 @@ find . -empty | rev | cut -d '/' -f 1 | rev
 find -type f -name "*.gif" | rev | cut -d "/" -f 1 | cut -d '.' -f 2- | rev | LC_ALL=C sort -f
 cut -c 1 | paste -s -d ''
 tail -n +2 | cut -f -1 | sort -k 1 | uniq -c | sort -rnk 1 | head -n 11 | rev | cut -d ' ' -f -1 | rev
+echo "Best School" > "\\\\'\"Best School\"\'\\\$\?\\\\\*:)"
