@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
-#Creating a script that uses if, else if and else statements
-x=1
-while [ $x -le 10 ]
+#more while if stuff
+
+count=1
+while [ $count -ne 11 ]
 do
-	if [ $x -eq 4 ]
-	then
-	    echo "bad luck"
-	elif [ $x -eq 8 ]
-	then
-	    echo "good luck"
-       	else
-	    echo "Best School"
-	fi
-	((x++))
+    if [ $count -eq 4 ]; then
+	echo "bad luck"
+    elif [ $count -eq 8 ]; then
+	echo "good luck"
+    else
+	echo "Best School"
+    fi
+    ((count++))
 done
