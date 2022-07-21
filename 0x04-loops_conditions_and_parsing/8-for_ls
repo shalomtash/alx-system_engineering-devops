@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
-# This script displays:
-# - The content of the current directory
-# - In a list format
-# - Where only the part of the name after the first dash is displayed
-
-for file in *
+#Creating a script that lists files
+for i in *
 do
-	echo "$file" | cut --delimiter="-" -f2
+    echo "$i" | cut -f 2- -d '-'
 done
