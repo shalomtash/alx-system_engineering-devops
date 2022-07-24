@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
-#while if stuff
+# Display Best School 10 times and after the 9 iteration display Hi
 
-count=0
-while [ $count -ne 11 ]
+i=0
+
+while [ "${i}" -lt 10 ]
 do
-    if [ $count -eq 9 ]; then
-	echo "Hi"
-    else
 	echo "Best School"
-    fi
-    ((count++))
+	if [ "${i}" -eq 8 ]
+	then
+		echo "Hi"
+	fi
+	((i++))
 done
