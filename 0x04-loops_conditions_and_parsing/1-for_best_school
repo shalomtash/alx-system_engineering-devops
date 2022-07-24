@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-# Displays "Best School" 10 times using a for loop.
+# Displays Best School 10 times with a for loop.
 
-for (( i=0; i<10; i++ ))
-do
- echo "Best School"
-done
+for ((x = 0; x < 10; x++)); do echo "Best School"; done
