@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
-#more while if stuff
+# Display Best School and in certain iterations displays good luck or bad luck
 
-count=1
-while [ $count -ne 11 ]
+i=0
+
+while [ "${i}" -lt 10 ]
 do
-    if [ $count -eq 4 ]; then
-	echo "bad luck"
-    elif [ $count -eq 8 ]; then
-	echo "good luck"
-    else
-	echo "Best School"
-    fi
-    ((count++))
+	if [ "${i}" -eq 3 ]
+	then
+		echo "bad luck"
+	elif [ "${i}" -eq 7 ]
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	((i++))
 done
