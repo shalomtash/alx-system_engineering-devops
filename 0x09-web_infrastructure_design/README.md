@@ -13,7 +13,7 @@ Project done during **Full Stack Software Engineering studies** at **ALX SE Scho
 * Database
 * Single point of failure
 * HTTP & HTTPS
-* Firewall
+* Firewall.
 
 ## Files
 
