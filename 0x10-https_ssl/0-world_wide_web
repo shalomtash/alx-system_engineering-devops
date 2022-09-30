@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 # Script that displays information about subdomains.
+# www --> 20776-lb-01 3.236.231.182
+# web-01 --> 20776-web-01 3.237.34.137
+# web-02 --> 20776-web-02 3.230.162.83
+
 
 func () {
     if [ -n "$2" ]
