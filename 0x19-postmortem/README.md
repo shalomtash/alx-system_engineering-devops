@@ -4,11 +4,11 @@
 Access to server endpoint using curl 0:80 was returning `curl: (7) Failed to connect to 0 port 80: Connection refused`. The issue lasted for 2 hours after the last server update from a team member up to when it was resolved. The Airbnb clone website was completely inaccessible to half of the clients during the 2 hours downtime. This was caused by a wrong  port value set in nginx configuration files.
 
 # Duration (East Africa Time GMT+3).
-Monday, 31 October 2022
+Tuesday, 1 November 2022
 
 
-08:37 AM: Logged into the server and nginx server was not responding to requests on socket 0:80
-08:38: Begun web debugging to locate issues. This involved the steps;
+13:37 : Logged into the server and nginx server was not responding to requests on socket 0:80
+13:40: Begun web debugging to locate issues. This involved the steps;
 Check if nginx is running 
 `sudo service nginx status`
 showed nginx is not running.
@@ -36,7 +36,7 @@ Checked nginx configuration files;
 
 The problem was with nginx configuration in the file `/etc/nginx/sites-enabled/default` . Nginx was listening on `8080` instead of `80`.
 
-08:51: nginx was configured to listen on port 80 and restarted successfully.
+13:51: nginx was configured to listen on port 80 and restarted successfully.
 # Root Cause.
 Nginx was listening to port 8080 instead of port 80 used to access web server endpoint. The nginx server config file /etc/nginx/sites-enabled/default was set to listen to port 8080 instead of port 80. The issue was fixed by changing the default port 8080 to 80 using  a shell command:
 
