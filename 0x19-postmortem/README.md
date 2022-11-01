@@ -1,54 +1,24 @@
-![This is an image](https://media.makeameme.org/created/if-you-could-436e34b63e.jpg)
+## Postmortem / Incidence Report
 
-# Issue summary
-Access to server endpoint using curl 0:80 was returning `curl: (7) Failed to connect to 0 port 80: Connection refused`. The issue lasted for 2 hours after the last server update from a team member up to when it was resolved. The Airbnb clone website was completely inaccessible to half of the clients during the 2 hours downtime. This was caused by a wrong  port value set in nginx configuration files.
+Any software system will eventually fail, and that failure can come stem from a wide range of possible factors: 
 
-# Duration (East Africa Time GMT+3).
-Tuesday, 1 November 2022
+            bugs 
+            traffic spikes 
+            security issues 
+            hardware failures 
+            natural disasters 
+            human error… 
 
+###### Failing is normal and failing is actually a great opportunity to learn and improve.
 
-13:37 : Logged into the server and nginx server was not responding to requests on socket 0:80
-13:40: Begun web debugging to locate issues. This involved the steps;
-Check if nginx is running 
-`sudo service nginx status`
-showed nginx is not running.
+Any great Software Engineer must learn from his/her mistakes to make sure that they won’t happen again.
 
-Check if there are nginx processes running.
-`pgrep -lf nginx`
-Showed the program is active and running.
+###### Failing is fine, but failing twice because of the same issue is not.
 
-Tried to restart nginx
-`sudo service nginx restart`
+A postmortem is a tool widely used in the tech industry. After any outage, the team(s) in charge of the system will write a summary that has 2 main goals:
 
-failed
+* To provide the rest of the company’s employees easy access to information detailing the cause of the outage. Often outages can have a huge impact on a company, so managers and executives have to understand what happened and how it will impact their work.
+* And to ensure that the root cause(s) of the outage has been discovered and that measures are taken to make sure it will be fixed.
 
-Check log files
-`cat /var/log/nginx/error.log | tail -10`
-bind() to [::]:8080 failed (98: Address already in use)
-
-Check processes using ports
-`netstat -lpn`
-nginx was listening on port 8080
-
-Checked nginx configuration files;
-`cat /etc/nginx/sites-available/default`
-`cat /etc/nginx/sites-enabled/default`
-
-The problem was with nginx configuration in the file `/etc/nginx/sites-enabled/default` . Nginx was listening on `8080` instead of `80`.
-
-13:51: nginx was configured to listen on port 80 and restarted successfully.
-# Root Cause.
-Nginx was listening to port 8080 instead of port 80 used to access web server endpoint. The nginx server config file /etc/nginx/sites-enabled/default was set to listen to port 8080 instead of port 80. The issue was fixed by changing the default port 8080 to 80 using  a shell command:
-
-`sudo sed -i 's/8080 default_server/80 default_server/g' /etc/nginx/sites-enabled/default`
-
-and nginx was restarted by the command:
-
-`sudo service nginx restart`
-
-# Corrective and Preventative measures.
-Nginx server management can be improved by using script automation. A server monitoring tool should be set up to enable quick response to problems.
-Todos
-1. Restrict users' access to the server to avoid unconfirmed server changes.
-2. Create nginx automation script in shell or puppet.
-3. Install a server monitoring system and a response team to handle server problems.
+A sample incidence report for a company called Semulink is written below.
+[Simulink incidence report]((https://dev.to/shalomtash/simulink-server-crash-incident-report-5324))
